@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4B5945;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    background-color: #30382c;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.img-logo {
+    width: 140px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-items: center;
+}
+
+h2 {
+    font-family: cursive;
+    font-size: 34px;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+.trabalhos {
+    display: grid;
+    gap: 50px;
+    margin: auto;
+    width: 100%;
+    max-width: 90%;
+    font-family: Apple Chancery, cursive;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.trabalho-card {
+    background-color: #97b18c;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.trabalho-card img {
+    border-radius: 20px;
+    width: 90%;
+    margin: 20px;
+    height: auto;
+}

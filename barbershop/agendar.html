@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan Barber Shop - Agendar</title>
+    <link rel="stylesheet" href="estilos/agendarStyle.css">
+    <link rel="stylesheet" href="estilos/menuStyle.css">
+    <link rel="icon" href="img/logo1.jpg" type="image/png">
+</head>
+
+<body>
+    <header>
+        <a href="sobrenos.html">
+            <img class="img-logo" src="img/logo1-removebg-preview.png" alt="Logo">
+        </a>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="agendar.html">Agendar</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="barbeiros.html">Barbeiros</a></li>
+                <li><a href="trabalhos.html">Trabalhos</a></li>
+                <li><a href="sobrenos.html">Sobre Nós</a></li>
+                <li><a href="historico.html">Histórico</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Agendar Serviço</h2>
+        <form id="agendamentoForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" required>
+
+            <label for="hora">Hora:</label>
+            <input type="time" id="hora" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="exemplo@email.com" required>
+
+            <div class="checkbox">
+                <label><input type="checkbox" id="barba"> Barba</label>
+                <label><input type="checkbox" id="corteM"> Corte Masculino</label>
+                <label><input type="checkbox" id="sobrancelha"> Sobrancelha</label>
+                <label><input type="checkbox" id="higiene"> Higiene Capilar</label>
+                <label><input type="checkbox" id="pintura"> Pintura</label>
+                <label><input type="checkbox" id="corteF"> Corte Feminino</label>
+            </div>
+
+            <button type="submit">Agendar</button>
+        </form>
+    </div>
+
+    <script>
+function processarAgendamento(event) {
+    event.preventDefault();
+
+    const nomeCliente = document.getElementById('nome').value;
+    const dataAgendamento = document.getElementById('data').value;
+    const horaAgendamento = document.getElementById('hora').value;
+    const emailCliente = document.getElementById('email').value;
+
+    let listaServicos = [];
+    document.querySelectorAll('.checkbox input[type="checkbox"]:checked').forEach(checkbox => {
+        listaServicos.push(checkbox.parentNode.textContent.trim());
+    });
+
+    if (listaServicos.length === 0) {
+        alert('Você precisa selecionar ao menos um serviço.');
+        return;
+    }
+
+    const agendamentosHistorico = JSON.parse(localStorage.getItem('historico')) || [];
+    
+    const novoAgendamento = {
+        nome: nomeCliente,
+        data: dataAgendamento,
+        hora: horaAgendamento,
+        email: emailCliente,
+        servicos: listaServicos
+    };
+    
+    agendamentosHistorico.push(novoAgendamento);
+    localStorage.setItem('historico', JSON.stringify(agendamentosHistorico));
+
+    window.location.href = 'historico.html';
+}
+
+const formularioAgendamento = document.getElementById('agendamentoForm');
+formularioAgendamento.addEventListener('submit', processarAgendamento);
+
+    </script>
+</body>
+
+</html>

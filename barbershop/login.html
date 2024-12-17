@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dan Barber Shop</title>
+    <link rel="stylesheet" href="estilos/loginStyle.css">
+    <link rel="icon" href="img/logo1.jpg" type="image/pgn">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <img src="img/logo1-removebg-preview.png" alt="Logo Dan Barber Shop" class="logo">
+
+        <form id="form">
+            <div class="card">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            
+            <div class="card">
+                <label for="data">Data de Nascimento:</label>
+                <input type="date" id="data" required>
+            </div>
+
+            <div class="card">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="aaaa@gmail.com"required>
+            </div>
+
+            <div class="card">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" placeholder="*****" required>
+            </div>
+
+            <div class="card">
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        localStorage.setItem('nome', nome);
+
+
+            window.location.href = 'servicos.html';
+        });
+    </script>
+
+</body>
